@@ -7,9 +7,24 @@ public class PC {
 	
 	public PC(Mapa mapa) {
 		this.mapa = mapa;
+		this.letra = 'O';
 	}
 	
 	public boolean jogar() {
-		return true;
+		int linha;
+		int coluna;
+		boolean entradaCorreta = false;
+		
+		System.out.println("____PC____");
+		
+		do {
+			linha = mapa.sortear(0, 3);
+			coluna = mapa.sortear(0, 3);
+			
+			entradaCorreta = mapa.estaVazio(linha,coluna);
+			
+		} while (entradaCorreta == false);
+		
+		return mapa.jogar(linha, coluna, letra);
 	}
 }
