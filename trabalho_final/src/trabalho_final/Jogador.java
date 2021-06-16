@@ -4,8 +4,8 @@ import java.util.Scanner;
 
 public class Jogador {
 	
-	private static char letra;
-	private static Mapa mapa;
+	private char letra;
+	private Mapa mapa;
 	
 	public Jogador(Mapa mapa) {
 		this.mapa = mapa;
@@ -24,7 +24,7 @@ public class Jogador {
 			linha = sc.nextInt();
 			coluna = sc.nextInt();
 			
-			if ((linha < 0 || linha > 2 ) || (coluna < 0 || coluna > 2) || (mapa.naoEstaVazio(linha,coluna)) ) {
+			if ((linha < 0 || linha > 2 ) || (coluna < 0 || coluna > 2)) {
 				System.out.println("VALOR INCORRETO! \nDIGITE NOVAMENETE.");
 			} else {
 				entradaCorreta = true;
