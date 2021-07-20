@@ -9,54 +9,41 @@ public class Mapa {
 	}
 	
 	public void limpar() {
-		for (int i = 0; i < mapa.length; i++) {
+		for (int i = 0; i < 3; i++) {
 			mapa[i][i] = ' ';
 		}
 	}
 	
 	public void desenhar(int jogada) {
 		
-		System.out.println("---------- .. Jogada: " + jogada);
-        for(int i = 0; i < 3; i++) {
-            System.out.print("|");
-            
-            for(int j = 0; j < 3; j++) {
-                System.out.print(mapa[i][j] + "|");
-            }
-            System.out.println(" ");
-        }
-        System.out.println("----------");
+		String linha = "_";
+		String coluna = "|";
+		
+		for (int i = 0; i < 3; i++) {
+			if (i < 2) {
+				System.out.println(mapa[i][i] + coluna);
+			} else {
+				System.out.println(mapa[i][i]);
+			}
+			for(int j = 0; j < 2; j++) {
+				System.out.println(linha);
+			}
+		}
 	}
 	
 	public boolean jogar(int l, int c, char jogador) {
-		
-		if (mapa[l][c] == ' ') {
-			mapa[l][c] = jogador;
-		}
-		
-		return verificarGanhador(jogador);
+		return false;
 	}
 	
 	public boolean verificarGanhador(char jogador) {
-		
-		if ((mapa[0][0] == jogador) && (mapa[0][1] == jogador) && (mapa[0][2] == jogador)) {
-			return true; // linha 0
-		} else if ((mapa[1][0] == jogador) && (mapa[1][1] == jogador) && (mapa[1][2] == jogador)) {
-			return true; // linha 1
-		} else if ((mapa[2][0] == jogador) && (mapa[2][1] == jogador) && (mapa[2][2] == jogador)) {
-			return true; // linha 2
-		} else if ((mapa[0][0] == jogador) && (mapa[1][0] == jogador) && (mapa[2][0] == jogador)) {
-			return true; // coluna 0
-		} else if ((mapa[0][1] == jogador) && (mapa[1][1] == jogador) && (mapa[2][1] == jogador)) {
-			return true; // coluna 1
-		} else if ((mapa[0][2] == jogador) && (mapa[1][2] == jogador) && (mapa[2][2] == jogador)) {
-			return true; // coluna 2
-		} else if ((mapa[0][0] == jogador) && (mapa[1][1] == jogador) && (mapa[2][2] == jogador)) {
-			return true; // diagonal direita
-		} else if ((mapa[0][2] == jogador) && (mapa[1][1] == jogador) && (mapa[2][0] == jogador)) {
-			return true; // diagonal esquerda
-		}
-		
 		return false;
+	}
+	
+	public boolean naoEstaVazio(int linha, int coluna) {
+		return mapa[linha][coluna] != ' ';
+	}
+	
+	public boolean estaVazio(int linha, int coluna) {
+		return mapa[linha][coluna] == ' ';
 	}
 }
